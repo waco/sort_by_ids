@@ -1,0 +1,29 @@
+=SortByIds
+
+ActionView::Helpers::ScriptaculousHelper.sortable_elementからパラメータを受け取り、
+データベースに反映します。
+
+will_paginateプラグイン使用時など、一部のデータを送信した場合も反映します。
+
+このプラグインを使用する前に、並び替え用の列をテーブルに追加してください。
+
+==インストール
+ % script/plugin install http://github.com/waco/sort_by_ids.git
+
+==使用方法
+
+viewでsortable_elementヘルパを呼び出します。
+sortable_elementヘルパについては以下を参照してください。
+http://api.rubyonrails.org/classes/ActionView/Helpers/ScriptaculousHelper.html#M001640
+
+ % <%= sortable_element "sort", :url => { :action => 'sort' } %>
+
+controllerにパラメータを受け取る記述をします。
+
+ % def sort
+ %   User.sort_by_ids(params[:sort], :column => 'order_number')
+ %   render :nothing => true
+ % end
+
+
+Copyright (c) 2010 waco, released under the MIT license
