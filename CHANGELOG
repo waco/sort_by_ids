@@ -1,3 +1,7 @@
 == 0.0.1 2010-5-4
 
 * Initial release
+
+== 0.0.2 2011-6-17
+
+* default_scopeが付いているmodelで順番がおかしくなるのを修正
