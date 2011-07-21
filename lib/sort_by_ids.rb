@@ -8,6 +8,7 @@ module SortByIds #:nodoc:
     # == Configration options
     #
     # *<tt>column</tt> - column name to order (options, default: 'position')
+    # *<tt>order</tt> -  definition to order
     #
     # Examples:
     #
@@ -18,7 +19,7 @@ module SortByIds #:nodoc:
     def sort_by_ids(sort_ids, options)
       options = { :column => 'position' }.update(options)
 
-      lists = unscoped.find(sort_ids, :order => options[:column])
+      lists = unscoped.find(sort_ids, :order => options[:order].blank? ? options[:column] : options[:order])
       orders = {}
       lists.each_with_index { |list, i| orders[list.id] = i }
 
